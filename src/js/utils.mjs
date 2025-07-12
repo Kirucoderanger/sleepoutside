@@ -23,14 +23,18 @@ export function setClick(selector, callback) {
 }
 
 
-export function getParam(param){
+export function getParam(products){
   const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const product = urlParams.get(param);
-return product;
+  //console.log(queryString);
+  const urlParams = new URLSearchParams(queryString);
+  const product = urlParams.get(products);
+  //console.log(product);
+  return product;
+  
 }
 
 export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
+
   const htmlStrings = list.map(template);
   // if clear is true we need to clear out the contents of the parent.
   if (clear) {
