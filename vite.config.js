@@ -2,8 +2,7 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  root: "src",
-  publicDir: "../public", // ✅ Tells Vite to copy assets from public → dist
+  root: "src/",
 
   build: {
     outDir: "../dist",
@@ -17,6 +16,29 @@ export default defineConfig({
     },
   },
 });
+
+
+
+/*import { resolve } from "path";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  root: "src",
+  publicDir: "../public", // ✅ Tells Vite to copy assets from public → dist
+
+  build: {
+    outDir: "../dist",
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, "src/index.html"),
+        cart: resolve(__dirname, "src/cart/index.html"),
+        checkout: resolve(__dirname, "src/checkout/index.html"),
+        product: resolve(__dirname, "src/product_pages/index.html")
+
+      },
+    },
+  },
+});*/
 
 
 

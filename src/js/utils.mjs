@@ -22,19 +22,15 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-
-export function getParam(products){
+// get the product id from the query string
+export function getParam(param) {
   const queryString = window.location.search;
-  //console.log(queryString);
   const urlParams = new URLSearchParams(queryString);
-  const product = urlParams.get(products);
-  //console.log(product);
-  return product;
-  
+  const product = urlParams.get(param);
+  return product
 }
 
 export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
-
   const htmlStrings = list.map(template);
   // if clear is true we need to clear out the contents of the parent.
   if (clear) {
@@ -42,5 +38,3 @@ export function renderListWithTemplate(template, parentElement, list, position =
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
-
-

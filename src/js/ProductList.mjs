@@ -1,5 +1,4 @@
 import { renderListWithTemplate } from "./utils.mjs";
-//import {getData} from "./ProductData.mjs";
 
 function productCardTemplate(product) {
   return `
@@ -13,7 +12,7 @@ function productCardTemplate(product) {
     </li>
     `;
 }
-//const listElement = document.querySelector(".products");
+
 export default class ProductList {
   constructor(category, dataSource, listElement) {
     this.category = category;
@@ -27,12 +26,7 @@ export default class ProductList {
   }
 
   renderList(list) {
-    
-    
-    renderListWithTemplate(productCardTemplate, this.listElement, list,);
-    
-
+    renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
 
 }
-
