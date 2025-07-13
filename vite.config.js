@@ -3,7 +3,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   root: "src/",
-  publicDir: "public/", // Tells Vite to copy assets from public → dist
+  publicDir: "../public", // Tells Vite to copy assets from public → dist
 
   build: {
     outDir: "../dist",
