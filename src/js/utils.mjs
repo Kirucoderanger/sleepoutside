@@ -39,6 +39,15 @@ export function renderListWithTemplate(template, parentElement, list, position =
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
+export function renderCartWithTemplate(template, parentElement, cart, position = "afterbegin", clear = false) {
+  const htmlStrings = cart.map(template);
+  // if clear is true we need to clear out the contents of the parent.
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
+
 
 /*
 export function renderWithTemplate(template, parentElement, data, callback) {
@@ -103,6 +112,9 @@ export default async function loadHeaderFooter(headerSelector, footerSelector) {
   return (headerElement && footerElement); 
 
 }
+
+
+
 /*
 const headerTemplate = loadTemplate("/public/partials/header.html");
 const headerElement = qs("#header");
