@@ -1,15 +1,7 @@
-import renderCartContents from "./ShoppingCart.mjs";
-import loadHeaderFooter from "./utils.mjs";
-loadHeaderFooter("#header", "#footer");
-renderCartContents();
-
-/*import { getLocalStorage} from "./utils.mjs";
-import loadHeaderFooter from "./utils.mjs";
+import { getLocalStorage} from "./utils.mjs";
 
 
-loadHeaderFooter("#header", "#footer");
-
-function renderCartContents() {
+export default function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
@@ -34,6 +26,6 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
-renderCartContents();
+//renderCartContents();
 
-*/
+

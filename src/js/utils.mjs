@@ -38,3 +38,88 @@ export function renderListWithTemplate(template, parentElement, list, position =
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
+
+export function renderCartWithTemplate(template, parentElement, cart, position = "afterbegin", clear = false) {
+  const htmlStrings = cart.map(template);
+  // if clear is true we need to clear out the contents of the parent.
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
+
+
+/*
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.innerHTML = template;
+  if (callback) {
+    callback(data);
+  }
+}
+
+async function loadTemplate(url) {
+  const res = await fetch(url);
+  const template = await res.text();
+  return template;
+}
+
+export default async function loadHeaderFooter() {
+  const headerTemplate = await loadTemplate("../partials/header.html");
+  const footerTemplate = await loadTemplate("../partials/footer.html");
+
+  const headerElement = document.querySelector("#header");
+  const footerElement = document.querySelector("#footer");
+
+  renderWithTemplate(headerTemplate, headerElement);
+  renderWithTemplate(footerTemplate, footerElement);
+}
+*/
+
+
+
+
+
+export function renderWithTemplate(template, parentElement, data, callback) {
+    parentElement.innerHTML = template;
+  if(callback) {
+    callback(data);
+}
+}
+
+export async function loadTemplate(url) {
+
+    const response = await fetch(url);
+    const template = await response.text();
+    return template;
+}
+export default async function loadHeaderFooter(headerSelector, footerSelector) {
+  const headerTemplate = await loadTemplate("/public/partials/header.html");
+  const footerTemplate = await loadTemplate("/public/partials/footer.html");
+  const headerElement = document.querySelector("#header");
+  const footerElement = document.querySelector("#footer");
+  if (headerElement) {
+    renderWithTemplate(headerTemplate, headerElement);
+  } else {
+    console.error(`Header element not found for selector: ${headerSelector}`);
+  }
+  if (footerElement) {
+    renderWithTemplate(footerTemplate, footerElement);
+  } else {
+    console.error(`Footer element not found for selector: ${footerSelector}`);
+  }
+  //return Promise.resolve();
+  //return Promise.all([headerPromise, footerPromise])
+  return (headerElement && footerElement); 
+
+}
+
+
+
+/*
+const headerTemplate = loadTemplate("/public/partials/header.html");
+const headerElement = qs("#header");
+renderWithTemplate(headerTemplate, headerElement);
+
+const footerTemplate = loadTemplate("/public/partials/footer.html");
+const footerElement = qs("#footer");
+renderWithTemplate(footerTemplate, footerElement);*/
