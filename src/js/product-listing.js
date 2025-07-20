@@ -12,5 +12,7 @@ const category = getParam("category");
 const dataSource = new ProductData();
 const element = document.querySelector(".product-list");
 const productListing = new ProductList(category, dataSource, element);
+console.log(category);
+document.querySelector("h2").textContent = `TOP PRODUCTS (${category})`;
 
-productListing.init();
+productListing.init();  
