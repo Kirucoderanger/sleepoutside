@@ -11,7 +11,7 @@ const product = new ProductDetails(productID, dataSource);
 product.init();*/
 
 import { getParam } from "./utils.mjs";
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductDetails from "./ProductDetails.mjs";
 import loadHeaderFooter from "./utils.mjs";
 
@@ -24,7 +24,7 @@ const product = new ProductDetails(productID, dataSource);
 product.init();*/
 
 const productID = getParam("product");
-const dataSource = new ProductData();
+const dataSource = new ExternalServices();
 const element = document.querySelector(".product-details");
 
 const product = new ProductDetails(productID, dataSource, element);

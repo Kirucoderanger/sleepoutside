@@ -5,6 +5,9 @@ export default function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  const subTotalValue = subTotal(cartItems);
+  document.querySelector(".list-total").textContent = `$${subTotalValue.toFixed(2)}`;
 }
 
 function cartItemTemplate(item) {
@@ -26,6 +29,10 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+function subTotal(cartItems) {
+  const amounts = cartItems.map((item) => item.FinalPrice); 
+  return amounts.reduce((sum, item) => sum + item, 0);
+}
 //renderCartContents();
 
 
