@@ -15,8 +15,7 @@ const productListing = new ProductList(category, dataSource, element);
 console.log(category);
 document.querySelector("h2").textContent = `TOP PRODUCTS (${category})`;
 
-productListing.init();  
-
+productListing.init();
 
 /*
 import loadHeaderFooter from "./utils.mjs";
