@@ -28,7 +28,7 @@ export default class ExternalServices {
     return data.Result;
   }
 
-  async checkout(payload) {
+  /*async checkout(payload) {
     const options = {
       method: "POST",
       headers: {
@@ -37,8 +37,48 @@ export default class ExternalServices {
       body: JSON.stringify(payload),
     };
     return await fetch(`${baseURL}checkout/`, options).then(convertToJson);
+  }*/
+
+/*
+  async checkout(payload) {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    };
+    const response = await fetch(`${baseURL}checkout/`, options);
+    return await convertToJson(response);
+  }*/
+
+async checkout(payload) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  };
+
+  const response = await fetch(`${baseURL}checkout/`, options);
+
+  if (!response.ok) {
+    // Try to parse error message from response body
+    const errorData = await response.json().catch(() => ({}));
+    const message = errorData.message || "Checkout request failed.";
+    throw new Error(message); // This ensures your catch(err) gets a real Error object
   }
+
+  return await convertToJson(response); // Only runs if response is OK
 }
+
+
+    
+}
+
+
+
 
 
 

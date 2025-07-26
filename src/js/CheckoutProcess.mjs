@@ -107,6 +107,10 @@ export default class CheckoutProcess {
       
       console.log(err);
        //console.error("Checkout failed:", err);
+        console.log("Type of err:", typeof err);         // usually 'object'
+  console.log("Is Promise?", err instanceof Promise); // should be false
+  console.log("Full err:", err);
+  console.log("err.message:", err.message);        // should now be readable
     }
   }
 }
