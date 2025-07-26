@@ -1,4 +1,4 @@
-const baseURL = import.meta.env.VITE_SERVER_URL;
+const baseURL = import.meta.env.VITE_SERVER_URL_GET || import.meta.env.VITE_SERVER_URL;
 
 function convertToJson(res) {
   const jsonResponse = res.json();
